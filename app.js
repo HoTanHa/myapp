@@ -190,7 +190,7 @@ setTimeout(() => {
 setInterval(function(){
 	httprequest1();
 	httprequest2();
-},60000);
+},180000);
 
 module.exports = app;
 

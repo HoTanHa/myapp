@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+	<head>
+		<meta charset="utf-8">
+		<title>Example</title>
+		<script src="/javascripts/Chart.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<link rel='stylesheet' href='/stylesheets/style.css' />
+
+	</head>
+
+	<body>
+		<div class="">
+			<div>
+				<div id="showMaxValue"></div>
+			</div>
+			<p>Hello</p>
+			<canvas id="canvas"></canvas>
+			<script type="text/javascript">
+				// var lb = <%- JSON.stringify(arrId) %>;
+				// var dt = <%- JSON.stringify(arrDt) %>;
+				var lb = JSON.parse('<%- JSON.stringify(arrId) %>');
+				var dt = JSON.parse('<%- JSON.stringify(arrDt) %>');
+				var ctx = document.getElementById("canvas");
+				var myChart = new Chart(ctx, {
+					type: 'line',
+					data: {
+						labels: lb,
+						datasets: [{
+							label: 'Energy of inverter (W)',
+							data: dt,
+							backgroundColor: 'rgb(73, 143, 255)',
+							borderColor: 'rgba(104, 47, 0, 1)',
+							borderWidth: 1,
+							lineTension: 0.3
+						}]
+					},
+					options: {
+						title: {
+							display: true,
+							text: 'Biểu đồ Năng lượng',
+						},
+						legend: {
+							display: false
+						},
+
+					}
+				});
+
+
+			</script>
+		</div>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function () {
+				let dt = JSON.parse('<%- JSON.stringify(arrDt) %>');
+				let xxxx = dt;
+				var max = Math.max.apply(Math, xxxx);
+				alert(max);
+				document.getElementById('showMaxValue').innerHTML = "  " + max + "";
+			})
+		</script>
+
+	</body>
+
+</html>
